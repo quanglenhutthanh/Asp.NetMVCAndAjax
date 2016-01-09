@@ -1,0 +1,9 @@
+G:\Projects\MVCBestPratices\source\Core\bin\Debug\Core.dll.config
+G:\Projects\MVCBestPratices\source\Core\bin\Debug\Core.dll
+G:\Projects\MVCBestPratices\source\Core\bin\Debug\Core.pdb
+G:\Projects\MVCBestPratices\source\Core\bin\Debug\EntityFramework.dll
+G:\Projects\MVCBestPratices\source\Core\bin\Debug\EntityFramework.SqlServer.dll
+G:\Projects\MVCBestPratices\source\Core\bin\Debug\EntityFramework.xml
+G:\Projects\MVCBestPratices\source\Core\bin\Debug\EntityFramework.SqlServer.xml
+G:\Projects\MVCBestPratices\source\Core\obj\Debug\Core.dll
+G:\Projects\MVCBestPratices\source\Core\obj\Debug\Core.pdb
