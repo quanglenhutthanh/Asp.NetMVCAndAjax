@@ -1,0 +1,40 @@
+﻿@using Core.Entities
+@Model int
+
+@{
+    ViewBag.Title = "View1";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    AjaxOptions ajaxOptions = new AjaxOptions{
+        UpdateTargetId = "gadgets",
+        LoadingElementId="loader",
+        LoadingElementDuration=1000
+    };
+}
+
+
+<h2>Gadgets By Category</h2>
+@using(Ajax.BeginForm("GadgetByCategoryData",ajaxOptions))
+{
+    <select id="id" name="id"></select>
+    <button type="submit">Submit</button>
+}
+<div id="loader" style="display:none">
+    <img src="~/Content/image/loading1.gif" />
+</div>
+<div id="gadgets">
+    @Html.Action("GadgetByCategoryData", new { id = @Model })
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        var url = '/DropdownAjax/CategoryList';
+        $.getJSON(url, function (data) {
+            var items = '<option value="">Select Category</option>';
+            $.each(data, function (i, cat) {
+                items += "<option value='" + cat.Value + "'>" + cat.Text + "</option>";
+            });
+            $('#id').html(items);
+        });
+    });
+</script>

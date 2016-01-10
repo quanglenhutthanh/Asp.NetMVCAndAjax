@@ -3,17 +3,17 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
 <div id="loader">
     Loading...
 </div>
-<div style="width:600px; margin-left:auto; margin-right:auto">
+<div style="width: 600px; margin-left: auto; margin-right: auto">
     <div style="background-color: lightgray">
         <h2>Gadget List</h2>
     </div>
     <p>Click the button to Get Gadgets with an Ajax call</p>
     <input id="btnAjax" name="btnAjax" type="button" value="Refresh" />
-    <div id="gadgets" style="background-color:lightskyblue"></div>
+    <div id="gadgets" style="background-color: lightskyblue"></div>
 </div>
 <div id="changePriceDiv" style="display: none">
     <hr />
@@ -31,59 +31,58 @@
     </table>
     <input id="btnChangePrice" name="btnChangePrice" type="button" value="Change Price" />
 </div>
-    <script>
-        
-        var loadData = function () {
-            $.ajax({
-                url: '/BasicAjax/GetGadgets',
-                contentType: 'application/html; charset=utf-8',
-                type: 'GET',
-                dataType: 'html'
-            })
-           .success(function (result) {
-               $('#gadgets').html(result);
-               $('#changePriceDiv').show().appendTo($('#gadgets'));
-               $('#loader').hide();
-           })
-           .error(function (xhr, status) {
-               alert(status);
-           })
-        }
-        loadData();
-        $('#btnAjax').click(function () {
-            $.ajax({
-                url: '/Gadget/GetGadgets',
-                contentType: 'application/html; charset=utf-8',
-                type: 'GET',
-                dataType:'html'
-            })
-            .success(function (result) {
-                $('#gadgets').html(result);
-                $('#changePriceDiv').show().appendTo($('#gadgets'));
-            })
-            .error(function (xhr, status) {
-                alert(status);
-            })
-        });
+<script>
+   var loadData = function () {
+       $.ajax({
+           url: '/BasicAjax/GetGadgets',
+           contentType: 'application/html; charset=utf-8',
+           type: 'GET',
+           dataType: 'html'
+       })
+      .success(function (result) {
+          $('#gadgets').html(result);
+          $('#changePriceDiv').show().appendTo($('#gadgets'));
+          $('#loader').hide();
+      })
+      .error(function (xhr, status) {
+          alert(status);
+      })
+   }
+   loadData();
+    $('#btnAjax').click(function () {
+        $.ajax({
+            url: '/Gadget/GetGadgets',
+            contentType: 'application/html; charset=utf-8',
+            type: 'GET',
+            dataType: 'html'
+        })
+        .success(function (result) {
+            $('#gadgets').html(result);
+            $('#changePriceDiv').show().appendTo($('#gadgets'));
+        })
+        .error(function (xhr, status) {
+            alert(status);
+        })
+    });
 
-        $('#btnChangePrice').click(function () {
-            var gadgetId = $('#txtId').val();
-            var price = $('#txtPrice').val();
-            $.ajax({
-                url: '/BasicAjax/ChangePrice',
-                contentType: 'application/html;charset:utf-8',
-                data: { id: gadgetId, newPrice: price },
-                type:'GET',
-                dataType:'html'
-            })
-            .success(function(result){
-                $('#gadgets').html(result);
-                alert('Change Price Success');
-            })
-            .error(function (xhr, status) {
-                alert(status);
-            })
-        });
-    </script>
+    $('#btnChangePrice').click(function () {
+        var gadgetId = $('#txtId').val();
+        var price = $('#txtPrice').val();
+        $.ajax({
+            url: '/BasicAjax/ChangePrice',
+            contentType: 'application/html;charset:utf-8',
+            data: { id: gadgetId, newPrice: price },
+            type: 'GET',
+            dataType: 'html'
+        })
+        .success(function (result) {
+            $('#gadgets').html(result);
+            alert('Change Price Success');
+        })
+        .error(function (xhr, status) {
+            alert(status);
+        })
+    });
+</script>
 
 

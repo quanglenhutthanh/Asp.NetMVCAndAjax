@@ -7,4 +7,3 @@ G:\Projects\MVCBestPratices\source\Core\bin\Debug\EntityFramework.xml
 G:\Projects\MVCBestPratices\source\Core\bin\Debug\EntityFramework.SqlServer.xml
 G:\Projects\MVCBestPratices\source\Core\obj\Debug\Core.dll
 G:\Projects\MVCBestPratices\source\Core\obj\Debug\Core.pdb
-G:\Projects\MVCBestPratices\source\Core\obj\Debug\Core.csprojResolveAssemblyReference.cache
