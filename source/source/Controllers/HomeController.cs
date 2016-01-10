@@ -23,13 +23,6 @@ namespace source.Controllers
         public ActionResult Index()
         {
             var test = gadgetRepro.Get();
-            var category = new Category
-            {
-                CategoryID = 1,
-                Name = "cat1"
-            };
-            categoryRepo.Insert(category);
-            categoryRepo.Save();
             return View();
         }
 
@@ -37,6 +30,17 @@ namespace source.Controllers
         {
             var test = categoryRepo.Get(c => c.CategoryID == 1,q=>q.OrderBy(i => i.DateCreated));
             return View();
+        }
+
+        public void CreateSampleCategory()
+        {
+            var category = new Category
+            {
+                CategoryID = 1,
+                Name = "cat1"
+            };
+            categoryRepo.Insert(category);
+            categoryRepo.Save();
         }
     }
 }
