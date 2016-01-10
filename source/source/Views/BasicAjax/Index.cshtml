@@ -12,7 +12,7 @@
         <h2>Gadget List</h2>
     </div>
     <p>Click the button to Get Gadgets with an Ajax call</p>
-    <input id="btnAjax" name="btnAjax" type="button" value="Get Products" />
+    <input id="btnAjax" name="btnAjax" type="button" value="Refresh" />
     <div id="gadgets" style="background-color:lightskyblue"></div>
 </div>
 <div id="changePriceDiv" style="display: none">
@@ -50,21 +50,21 @@
            })
         }
         loadData();
-        //$('#btnAjax').click(function () {
-        //    $.ajax({
-        //        url: '/Gadget/GetGadgets',
-        //        contentType: 'application/html; charset=utf-8',
-        //        type: 'GET',
-        //        dataType:'html'
-        //    })
-        //    .success(function (result) {
-        //        $('#gadgets').html(result);
-        //        $('#changePriceDiv').show().appendTo($('#gadgets'));
-        //    })
-        //    .error(function (xhr, status) {
-        //        alert(status);
-        //    })
-        //});
+        $('#btnAjax').click(function () {
+            $.ajax({
+                url: '/Gadget/GetGadgets',
+                contentType: 'application/html; charset=utf-8',
+                type: 'GET',
+                dataType:'html'
+            })
+            .success(function (result) {
+                $('#gadgets').html(result);
+                $('#changePriceDiv').show().appendTo($('#gadgets'));
+            })
+            .error(function (xhr, status) {
+                alert(status);
+            })
+        });
 
         $('#btnChangePrice').click(function () {
             var gadgetId = $('#txtId').val();

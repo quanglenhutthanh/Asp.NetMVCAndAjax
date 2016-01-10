@@ -25,6 +25,13 @@ namespace source.Controllers
             return PartialView(gadgets);
         }
 
+        public PartialViewResult GetGadgetsByCategory(int id)
+        {
+            System.Threading.Thread.Sleep(5000);
+            var gadgets = gadgetRepo.GetByCategoryId(id);
+            return PartialView("GetGadgets",gadgets);
+        }
+
         public PartialViewResult ChangePrice(int id,decimal newPrice)
         {
             var gadget = gadgetRepo.GetByID(id);

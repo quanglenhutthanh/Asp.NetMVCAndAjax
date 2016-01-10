@@ -11,5 +11,10 @@ namespace Core.Reposities
     public class GadgetRepository : RepositoryBase<Gadget>
     {
         public GadgetRepository(DataContext context):base(context){}
+
+        public List<Gadget> GetByCategoryId(int id)
+        {
+            return context.Gadgets.Where(i => i.CategoryID == id).ToList();
+        }
     }
 }

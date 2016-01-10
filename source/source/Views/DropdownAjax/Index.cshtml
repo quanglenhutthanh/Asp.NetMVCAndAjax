@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<style>
+  .loader {
+  position: absolute;
+  top: 40%;
+  bottom: 40%;
+  left: 45%;
+  right: 45%;
+  background-color: white;
+  background-image:url("/Content/image/loading1.gif") ;
+  background-repeat:no-repeat;
+}
+</style>
+<h2>Dropdown List using Ajax</h2>
+<div>
+    <select id="CategoryDrp"></select>
+</div>
+<div id="loader" style="display:none">
+    <img src="~/Content/image/loading1.gif" />
+</div>
+<div id="gadgets"></div>
+
+<script>
+    $(document).ready(function () {
+        var url = '/DropdownAjax/CategoryList';
+        $.getJSON(url, function (data) {
+            var items = '<option value="">Select Category</option>';
+            $.each(data, function (i, cat) {
+                items += "<option value='" + cat.Value + "'>" + cat.Text + "</option>";
+            });
+            $('#CategoryDrp').html(items);
+        });
+    });
+    $('#CategoryDrp').change(function () {
+        $('#loader').show();
+        var URL = '/BasicAjax/GetGadgetsByCategory';
+        var categoryId = $('#CategoryDrp option:selected').val();
+        $.ajax({
+            url: URL,
+            contentType: 'applcation/html; chartset:utf-8',
+            data:{id:categoryId},
+            type: 'GET',
+            dataType:'html'
+        })
+        .success(function (result) {
+            $('#gadgets').html(result);
+            
+        })
+        .error(function (xhr, status) {
+            $('#gadgets').html(status.toString());
+        })
+        .done(function () {
+            $('#loader').hide();
+        })
+        
+    });
+</script>
