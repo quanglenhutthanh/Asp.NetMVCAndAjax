@@ -25,7 +25,13 @@
     @Html.Action("GadgetByCategoryData", new { id = @Model })
 </div>
 
-
+@{List<Category> categories = ViewBag.Categories as List<Category>;}
+@foreach (var cat in categories)
+{
+    @Ajax.ActionLink(cat.Name,"GadgetByCategoryData",new {id=cat.CategoryID},
+        new AjaxOptions{UpdateTargetId = "gadgets",LoadingElementId="loader",
+        LoadingElementDuration=1000})
+}
 <script>
     $(document).ready(function () {
         var url = '/DropdownAjax/CategoryList';

@@ -3,6 +3,7 @@ using Core.Reposities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 
@@ -20,6 +21,7 @@ namespace source.Controllers
         }
         public PartialViewResult GadgetByCategoryData(int id)
         {
+            Thread.Sleep(5000);
             var gadgets = gadgetRepo.Get();
             if (id != -1)
             {
@@ -30,6 +32,7 @@ namespace source.Controllers
 
         public ActionResult GadgetByCategory(int id = -1)
         {
+            ViewBag.Categories = categoryRepo.Get();
             return View((object)id);
         }
 	}
